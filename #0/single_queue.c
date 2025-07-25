@@ -27,7 +27,7 @@ void enque(int value){
     }
     else{
         if(front==-1){
-            front=0;
+            front=rear=0;
         }
         else{
             rear=rear+1;
