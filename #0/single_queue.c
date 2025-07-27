@@ -27,11 +27,10 @@ void enque(int value){
     }
     else{
         if(front==-1){
-            front=rear=0;
+            front=0;
         }
-        else{
-            rear=rear+1;
-        }
+        rear=rear+1;
+        
         q[rear]=value;
     }
 }
