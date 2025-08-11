@@ -9,7 +9,7 @@ void insert_front(int a)
 {
     if (front == 0 && rear == max_size - 1 || front == rear + 1)
     {
-        cout << "Overflow." << endl;
+        cout << "Overflow!" << endl;
         return;
     }
     if (front == -1)
@@ -37,6 +37,7 @@ void insert_rear(int b)
     if (front == -1)
     {
         front = 0;
+        rear=0;
     }
     else
     {
@@ -66,16 +67,17 @@ void delete_front()
 
 void delete_rear()
 {
-    int val = q[rear];
     if (front == -1)
     {
         cout << "underflow." << endl;
         return;
     }
+    int val = q[rear];
     if (front == rear)
     {
         front = -1;
         rear = -1;
+        return ;
     }
     if (rear == 0)
     {
