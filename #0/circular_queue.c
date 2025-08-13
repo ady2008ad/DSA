@@ -45,10 +45,21 @@ void dequeue(){
     printf("%d is removed!\n",ele);
 }
 void display(){
-    for(int i=front;i<=rear;i++){
-        printf("%d   ",q[i]);
+    if(isEmpty()){
+        printf("Queue is Empty!\n");
+        return ;
     }
-    printf("\n");
+    else{
+        int i=front;
+        while(1){
+            printf("%d ",q[i]);
+            if(i==rear){
+                break;
+            }
+            i=(i+1)%size;
+        }
+        printf("\n");
+    }
 }
 
 int main(){
