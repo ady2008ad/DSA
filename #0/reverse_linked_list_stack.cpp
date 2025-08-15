@@ -1,5 +1,32 @@
+//Reversing a linked list using stack.
 #include <iostream>
 using namespace std;
+
+class Stack{
+    public:
+    int *stack;
+    int top;
+    int size;
+
+    class singleLL;
+
+    Stack(int s){
+        stack=new int[s];
+        top=-1;
+        size=s;
+    }
+
+    void push(int value){
+        stack[++top]=value;
+    }
+
+    int pop(){
+        return stack[top--];
+    }
+    friend class singleLL;
+
+};
+
 class Node
 {
 public:
@@ -102,11 +129,27 @@ public:
         }
         cout<<endl;
     }
+
+    void reverse(Stack &s){
+        Node *temp=head;
+        while(temp!=NULL){
+            s.push(temp->data);
+            temp=temp->next;
+        }
+        temp=head;
+        while(temp!=NULL){
+            int val=s.pop();
+            temp->data=val;
+            temp=temp->next;
+        }
+
+    }
 };
 
 int main()
 {
     singleLL obj;
+    Stack s(100);
     obj.insert_at_beg(10);
     obj.insert_at_beg(20);
     obj.insert_at_beg(30);
@@ -117,6 +160,8 @@ int main()
     obj.display();
     obj.delete_at_end();
     obj.delete_at_beg();
+    obj.display();
+    obj.reverse(s);
     obj.display();
 
     return 0;
