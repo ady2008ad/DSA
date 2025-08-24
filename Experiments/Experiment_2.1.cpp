@@ -48,38 +48,11 @@ void display(){
 }
 
 int main(){
-    int a,b;
-
-    start:
-    printf("Enter 1 to push a value to stack\nEnter 2 to pop a value from the stack\nEnter 3 to peek a value from the stack\nEnter 4 to see the full stack\nEnter 5 to exit program\n ");
-
-    scanf("%d",&a);
-
-    switch(a){
-        case 1:
-        printf("Enter the value you want to push: ");
-        scanf("%d",&b);
-        push(b);
-        break;
-
-        case 2:
-        pop();
-        break;
-
-        case 3:
-        peek();
-        break;
-
-        case 4:
-        display();
-        break;
-
-        case 5:
-        goto end;
-    }
-
-    goto start;
-
-    end:
+    push(10);
+    push(20);
+    push(30);
+    display();
+    pop();
+    display();
     return 0;
 }
