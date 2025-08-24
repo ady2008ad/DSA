@@ -1,4 +1,4 @@
-// WAP on a 32-bit compiler to understand the concept of array storage, size of a word. Find the address of element and verify it with the theoretical value. Program may be written for arrays up to 4-dimensions.
+//WAP on a 32-bit compiler to understand the concept of array storage, size of a word. Find the address of element and verify it with the theoretical value. Program may be written for arrays up to 4-dimensions.
 #include <iostream>
 using namespace std;
 
