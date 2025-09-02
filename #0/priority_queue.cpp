@@ -14,25 +14,31 @@ class PQimp{
         maxsize=ms;
         q=new PQ[ms];
     }
-    void insert(int d, int priority_value){
-        //Step1: Check Overflow
-        //Step2: Traverse the q
-        //Step3: Check q[1].pv>priority value
-        //Step4: If step 3 is true shift till condition is true
-        //Step5: Insert the data
-        //Step6: Increase the count
-        for(int i=count;i>=0;i++){
-            if(q[i].pv>priority_value){
-                q[i+1]=q[i];
-            }
-            else{
-                q[i].data=d;
-                q[i].pv=priority_value;
-                count++;
-                break;
-            }
+    void insert(int d, int priority_value) {
+    // Step 1: Check Overflow
+    if (count == maxsize) {
+        cout << "Queue Overflow!" << endl;
+        return;
+    }
+
+    int i;
+    // Step 2: Traverse backward to find the correct position
+    for (i = count - 1; i >= 0; i--) {
+        // Step 3: Shift elements if they have greater priority value
+        if (q[i].pv > priority_value) {
+            q[i + 1] = q[i];
+        } else {
+            break;
         }
     }
+
+    // Step 4: Insert at the found position
+    q[i + 1].data = d;
+    q[i + 1].pv = priority_value;
+
+    // Step 5: Increase the count
+    count++;
+}
     void del(){
         for(int i=0;i<count;i++){
             q[i]=q[i+1];
@@ -49,9 +55,9 @@ class PQimp{
 };
 int main(){
     PQimp obj(100);
-    obj.insert(10,2);
+    obj.insert(10,1);
     obj.insert(20,3);
-    obj.insert(30,1);
+    obj.insert(30,2);
     obj.display();
     obj.del();
     obj.display();
