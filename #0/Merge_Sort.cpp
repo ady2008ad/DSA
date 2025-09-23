@@ -15,7 +15,7 @@ void merge(vector<int> &a, int low, int mid, int high)
         }
         else
         {
-            temp.push_back(a[j]);
+            temp.push_back(a[j]); 
             j++;
         }
     }
