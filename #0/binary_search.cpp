@@ -6,7 +6,7 @@ int BS(vector <int> v,int x){
     int mid;
     while(low<=high){
         mid=low+(high-low)/2;
-        if(v[mid]==x){
+        if(v[mid]==x){hghjghjghjghj
             return mid;
         }
         else if(v[mid]<x){
