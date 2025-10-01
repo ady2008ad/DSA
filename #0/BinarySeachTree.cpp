@@ -32,6 +32,38 @@ class BST {
         return root;
     }
 
+    int minValue(Node* root) {
+        int minv = root->key;
+        while (root->left != NULL) {
+            minv = root->left->key;
+            root = root->left;
+        }
+        return minv;
+    }
+
+    Node* del_rec(Node* root, int key){
+        if (root == NULL)
+            {return root;}
+
+        if (key < root->key)
+            {root->left = del_rec(root->left, key);}
+        else if (key > root->key)
+            {root->right = del_rec(root->right, key);}
+        else {
+            if (root->left == NULL)
+                return root->right;
+            else if (root->right == NULL)
+                return root->left;
+
+            root->key = minValue(root->right);
+
+            root->right = del_rec(root->right, root->key);
+        }
+
+        return root;
+    }
+
+
 public:
     BST() {
         root = NULL;
@@ -39,6 +71,10 @@ public:
 
     void insert(int k) {
         root = insert_rec(root, k);
+    }
+
+    void del(int key){
+        root=del_rec(root,key);
     }
 
     void inorder(Node* root) {
