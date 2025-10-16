@@ -1,7 +1,3 @@
-// Binary Search Tree(BST): It is a special type of binary tree that organize data so that searching, insertion, deletion can be done in a organized manner.
-// Properties:
-//   1.All keys in left subtree of a node are smaller than that node key.
-//   2.All keys in the right subtree of a node are larger than that node key.
 #include <iostream>
 using namespace std;
 
