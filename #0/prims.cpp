@@ -30,36 +30,39 @@ public:
         }
     }
     void prims(){
-        int w[100]={1e9};
-        int p[100]={-1};
-        int visited[100]={0};
-        int min=mat[0][0];
-        int s;
+        int w[100], p[100], visited[100];
         for(int i=0;i<v;i++){
-            for(int j=0;j<v;j++){
-                if(mat[i][j]<min){
-                    min=mat[i][j];
-                    s=i;
+            w[i] = 1e9;
+            p[i] = -1;
+            visited[i] = 0;
+        }
+
+        w[0] = 0; // start from vertex 0
+
+        for(int count = 0; count < v - 1; count++){
+            int u = -1;
+            int minWeight = 1e9;
+            for(int i=0;i<v;i++){
+                if(!visited[i] && w[i] < minWeight){
+                    minWeight = w[i];
+                    u = i;
+                }
+            }
+
+            visited[u] = 1;
+
+            for(int i=0;i<v;i++){
+                if(mat[u][i] < 1e9 && !visited[i] && mat[u][i] < w[i]){
+                    p[i] = u;
+                    w[i] = mat[u][i];
                 }
             }
         }
-        p[s]=-1;
-        w[s]=0;
-        int u;
-        for(int i=0;i<v;i++){
-            if(min<w[i]){
-                u=w[i];
-            }
-        }
-        visited[u]=1;
-        for(int i=0;i<v;i++){
-            if(mat[u][i] && visited[i]!=-1 && w[i]>mat[u][i] ){
-                p[i]=u;
-                w[i]=mat[u][i];
-            }
-        }
 
-
+        cout << "Edges in MST:\n";
+        for(int i=1; i<v; i++){
+            cout << p[i]+1 << " - " << i+1 << " : " << w[i] << endl;
+        }
     }
 };
 
@@ -79,5 +82,6 @@ int main() {
     }
 
     obj.display();
+    obj.prims();
     return 0;
 }
