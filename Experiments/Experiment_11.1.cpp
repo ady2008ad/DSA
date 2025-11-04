@@ -1,4 +1,3 @@
-//Copy pasted from geeks for geeks
 #include <iostream>
 using namespace std;
 class Node {
