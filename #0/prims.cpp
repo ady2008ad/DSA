@@ -41,7 +41,7 @@ public:
 
         for(int count = 0; count < v - 1; count++){
             int u = -1;
-            int minWeight = 1e9;
+            int minWeight = INT_MAX;
             for(int i=0;i<v;i++){
                 if(!visited[i] && w[i] < minWeight){
                     minWeight = w[i];
@@ -52,7 +52,7 @@ public:
             visited[u] = 1;
 
             for(int i=0;i<v;i++){
-                if(mat[u][i] < 1e9 && !visited[i] && mat[u][i] < w[i]){
+                if(mat[u][i] < INT_MAX && !visited[i] && mat[u][i] < w[i]){
                     p[i] = u;
                     w[i] = mat[u][i];
                 }
