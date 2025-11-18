@@ -12,7 +12,7 @@ public:
         for (int i = 0; i < v; i++) {
             mat[i] = new int[v];
             for (int j = 0; j < v; j++)
-                mat[i][j] = 1e9;
+                mat[i][j] = INT_MAX;
         }
     }
 
@@ -32,7 +32,7 @@ public:
     void prims(){
         int w[100], p[100], visited[100];
         for(int i=0;i<v;i++){
-            w[i] = 1e9;
+            w[i] = INT_MAX;
             p[i] = -1;
             visited[i] = 0;
         }
