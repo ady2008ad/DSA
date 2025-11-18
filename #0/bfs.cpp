@@ -32,21 +32,18 @@ public:
     void bfs(int s,int max){
         s=s-1;
         int *visited=new int[max]();
-        int *q=new int[max];
-        int front,rear;
-        front=rear=-1;
+        queue <int> q;
         visited[s]=1;
-        q[++rear]=s;
-        front=0;
+        q.push(s);
         cout<<"BFS:"<<endl;
-        while(front<=rear){
-            int current=q[front];
-            front++;
+        while(!q.empty()){
+            int current=q.front();
+            q.pop();
             cout<<current+1<<" ";
             for(int i=0;i<v;i++){
                 if(mat[current][i]==1 && visited[i]!=1){
                     visited[i]=1;
-                    q[++rear]=i;
+                    q.push(i);
                 }
             }
         }

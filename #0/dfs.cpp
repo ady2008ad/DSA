@@ -32,18 +32,18 @@ public:
     void dfs(int s,int max){
         s=s-1;
         int *visited=new int[max]();
-        int *st=new int[max];
-        int top=-1;
+        stack <int> st;
         visited[s]=1;
-        st[++top]=s;
+        st.push(s);
         cout<<"DFS:"<<endl;
-        while(top!=-1){
-            int current=st[top--];
+        while(!st.empty()){
+            int current=st.top();
+            st.pop();
             cout<<current+1<<" ";
             for(int i=0;i<v;i++){
                 if(mat[current][i]==1 && visited[i]!=1){
                     visited[i]=1;
-                    st[++top]=i;
+                    st.push(i);
                 }
             }
         }
