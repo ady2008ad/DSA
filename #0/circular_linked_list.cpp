@@ -71,4 +71,90 @@ public:
         newNode->next = temp->next;
         temp->next = newNode;
     }
+
+    void delete_at_beg()
+    {
+        if (head == NULL)
+            return;
+
+        if (head->next == head)
+        {
+            delete head;
+            head = NULL;
+        }
+        else
+        {
+            Node *temp = head;
+            while (temp->next != head)
+            {
+                temp = temp->next;
+            }
+            Node *toDelete = head;
+            temp->next = head->next;
+            head = head->next;
+            delete toDelete;
+        }
+    }
+
+    void delete_at_end()
+    {
+        if (head == NULL)
+            return;
+
+        if (head->next == head)
+        {
+            delete head;
+            head = NULL;
+        }
+        else
+        {
+            Node *temp = head;
+            while (temp->next->next != head)
+            {
+                temp = temp->next;
+            }
+            Node *toDelete = temp->next;
+            temp->next = head;
+            delete toDelete;
+        }
+    }
+
+    void delete_at_pos(int pos)
+    {
+        if (head == NULL)
+            return;
+
+        if (pos == 0)
+        {
+            delete_at_beg();
+            return;
+        }
+
+        Node *temp = head;
+        for (int i = 0; i < pos - 1; i++)
+        {
+            temp = temp->next;
+        }
+
+        Node *toDelete = temp->next;
+        temp->next = toDelete->next;
+        delete toDelete;
+    }
+
+    void display()
+    {
+        if (head == NULL)
+        {
+            cout << "List is empty" << endl;
+            return;
+        }
+
+        Node *temp = head;
+        do
+        {
+            cout << temp->data << " ";
+            temp = temp->next;
+        } while (temp != head);
+        cout << endl;
+    }
 };
