@@ -69,9 +69,13 @@ class BST
         else
         {
             if (root->left == NULL)
+            {
                 return root->right;
+            }
             else if (root->right == NULL)
+            {
                 return root->left;
+            }
 
             root->key = minValue(root->right);
 
